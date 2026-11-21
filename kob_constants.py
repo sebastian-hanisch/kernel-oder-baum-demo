@@ -47,7 +47,7 @@ PRESETS = {
     "Viele Rauschmerkmale": {"welt": "F8", "n": 400, "seed": DEFAULT_SEED, "gegner": DEFAULT_GEGNER, "skalierung": DEFAULT_SCALING, "winkel": 0, "rauschen": 8},
 }
 PRESET_HELP = {
-    "Kreis mit Rauschen": "Liefergebiet: Kreis mit halber Fläche des Quadrats, jedes Etikett mit Wahrscheinlichkeit 0,1 vertauscht (Bayes-Fehler genau 10 %), 300 Zeilen, zwei Merkmale.",
+    "Kreis mit Rauschen": "Liefergebiet: Kreis mit halber Fläche des Quadrats, jedes Label mit Wahrscheinlichkeit 0,1 vertauscht (Bayes-Fehler genau 10 %), 300 Zeilen, zwei Merkmale.",
     "Schwellenregeln": "Welt E: Klasse hängt an Schwellen einzelner Merkmale (achsenparallel), 10 Merkmale davon 7 irrelevant, 300 Zeilen, Bayes-Fehler genau 10 %.",
     "Schwellenregeln gedreht": "Dieselbe Aufgabe wie Welt E, aber die 10 Merkmale mit einer zufälligen Drehung gemischt (Welt Er); der Drehwinkel-Regler gilt für die 2D-Fassung in Experiment 3.",
     "Wechselwirkung": "Welt B: die Klasse hängt am Produkt zweier Merkmale, 4 Merkmale, 300 Zeilen; Bayes-Fehler rund 24 %.",

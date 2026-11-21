@@ -5,7 +5,7 @@ Die Lieferungen (Welten F und F8) und der Container-Erzeuger (Welt D) folgen der
 (andere Quelle, andere Reihenfolge): ihre Zeilen sind nicht die der Vormessung des Plans und nicht die der beiden Quellen, nur die Verteilung ist dieselbe.
 
 Zufallsquelle: Gleichverteilung bitgleich aus SplitMix64; Normalzahlen als `NormalDist().inv_cdf(random())` (schnell, auf Windows und Linux gleich bis auf die letzte Gleitkommastelle).
-Reihenfolge der Ziehungen je Welt: erst alle Merkmale, dann die Etiketten (`random()` gegen p(x)); die Lieferungen ziehen ihre Spalten wie `cart-demo` in fester Reihenfolge.
+Reihenfolge der Ziehungen je Welt: erst alle Merkmale, dann die Labels (`random()` gegen p(x)); die Lieferungen ziehen ihre Spalten wie `cart-demo` in fester Reihenfolge.
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ _INV = NormalDist().inv_cdf
 _TWO_NEG54 = 2.0 ** -54
 
 R0 = math.sqrt(2.0 / math.pi)       # Welt P: Kreisfläche pi r0^2 = halbe Fläche des Quadrats [-1, 1]^2
-P_FLIP = 0.1                        # Welt P: Etiketten mit dieser Wahrscheinlichkeit vertauscht
+P_FLIP = 0.1                        # Welt P: Labels mit dieser Wahrscheinlichkeit vertauscht
 DURATION_NOISE = 7.0                # Lieferungen: Standardabweichung des Zufalls in der Dauer (Minuten)
 PROMISE_SLACK = 14.0                # Lieferungen: Puffer in der versprochenen Zeit (Minuten)
 
@@ -46,7 +46,7 @@ WORLD_LABELS = {
     "D": "D Container-Erzeuger (20 Spalten)",
     "F": "F Lieferungen: zu spät (8 Merkmale + 3 Rauschmerkmale)",
     "F8": "F8 Lieferungen mit 8 Rauschmerkmalen",
-    "P": "P Liefergebiet (Kreis mit Etikettenrauschen)",
+    "P": "P Liefergebiet (Kreis mit Labelsrauschen)",
     "Ri": "Ri Ringe (make_circles, Rauschen 0,1)",
     "Er": "Er wie E, Merkmale zufällig gedreht",
     "Br": "Br wie B, Merkmale zufällig gedreht",
@@ -66,7 +66,7 @@ class World:
         return float(np.mean(np.minimum(self.p, 1.0 - self.p)))
 
     def bayes_error_empirical(self) -> float:
-        """Fehler der Bayes-Regel 1[p > 1/2] gegen die gezogenen Etiketten."""
+        """Fehler der Bayes-Regel 1[p > 1/2] gegen die gezogenen Labels."""
         return float(np.mean((self.p > 0.5).astype(int) != self.y))
 
 

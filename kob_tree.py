@@ -224,7 +224,7 @@ def _subtree_stats(tree, is_leaf):
 
 
 def pruning_path(tree):
-    """Beschneidungspfad nach Kosten-Komplexität. Immer wird der Teilbaum mit dem kleinsten effektiven alpha = (R(t) - R(T_t)) / (|Blätter(T_t)| - 1) zum Blatt gemacht,
+    """Pruning-Pfad nach Kosten-Komplexität. Immer wird der Teilbaum mit dem kleinsten effektiven alpha = (R(t) - R(T_t)) / (|Blätter(T_t)| - 1) zum Blatt gemacht,
     dabei ist R die mit n/N gewichtete Unreinheit. Rückgabe: Liste von (alpha, Blätter, Gesamt-Unreinheit der Blätter, geschnittener Knoten); Eintrag 0 ist der volle Baum mit alpha 0.
     Nach jedem Split ändern sich nur die Vorfahren des Knotens; alpha wird nie kleiner als das vorige (wie in scikit-learn)."""
     m = tree.n_nodes
@@ -275,7 +275,7 @@ def prune(tree, alpha, path=None):
 
 
 def prune_to_leaves(tree, max_leaves, path=None):
-    """Der Baum auf dem Beschneidungspfad mit den meisten Blättern, die höchstens `max_leaves` sind (mindestens ein Blatt)."""
+    """Der Baum auf dem Pruning-Pfad mit den meisten Blättern, die höchstens `max_leaves` sind (mindestens ein Blatt)."""
     path = path or pruning_path(tree)
     k = next(i for i, (_, leaves, _, _) in enumerate(path) if leaves <= max_leaves)
     cut = [t for _, _, _, t in path[1:k + 1]]

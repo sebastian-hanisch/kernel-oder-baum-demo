@@ -116,7 +116,7 @@ def test_lieferungen_bereiche_und_verteilungen_als_band():
 
 
 def test_lieferungen_ohne_rauschmerkmale_der_welt_f_und_f8_teilen_ihre_ziehungen():
-    """Wie in cart-demo werden immer alle acht Rauschspalten gezogen: F (3) und F8 (8) haben dieselben ersten 11 Spalten, dieselben Etiketten und Wahrscheinlichkeiten."""
+    """Wie in cart-demo werden immer alle acht Rauschspalten gezogen: F (3) und F8 (8) haben dieselben ersten 11 Spalten, dieselben Labels und Wahrscheinlichkeiten."""
     a, b = W.generate("F", 300, 4), W.generate("F8", 300, 4)
     assert np.array_equal(a.X, b.X[:, :11]) and np.array_equal(a.y, b.y) and np.array_equal(a.p, b.p)
 

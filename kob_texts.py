@@ -14,8 +14,8 @@ import kob_frozen as F
 
 INTRO_MD = """
 Welches Verfahren bei einer Klassifikation mit zwei Klassen vorn liegt, hängt in diesen **erzeugten Welten** an der **Bauart der Wahrheit**, an den **Koordinaten** und an der **Einstellung des Gegners**,
-nicht am Etikett „Kern oder Baum“. Jede Welt hat eine **bekannte Wahrscheinlichkeit** und damit einen berechenbaren **Bayes-Fehler** (den kleinsten erreichbaren Fehler). Verglichen werden die **Gauß-SVM**
-(ein Kernverfahren), **abgestimmte Bäume** (Zufallswald und Gradient Boosting), ein **kleines Netz** und die **lineare SVM**, je Welt über 20 Zufalls-Seeds.
+nicht am Label „Kern oder Baum“. Jede Welt hat eine **bekannte Wahrscheinlichkeit** und damit einen berechenbaren **Bayes-Fehler** (den kleinsten erreichbaren Fehler). Verglichen werden die **Gauß-SVM**
+(ein Kernverfahren), **abgestimmte Bäume** (Random Forest und Gradient Boosting), ein **kleines Netz** und die **lineare SVM**, je Welt über 20 Zufalls-Seeds.
 
 Hier meldet kein Löser einen Fehler: die Gauß-SVM läuft sauber durch, und nichts sagt, dass ihr Verdikt am Gegner (Standard oder abgestimmt), an den Koordinaten (Drehung der Merkmale) oder an den Einheiten
 (Skalierung) hängt. **Der Vergleich selbst meldet nichts.** Das ist die schwache Form der Lehre dieser Reihe, dass ein Verfahren ohne Fehlermeldung durchlaufen und trotzdem falsch eingestellt sein kann.
@@ -192,7 +192,7 @@ die Mindestblattgröße wird per 5-facher Kreuzvalidierung aus $\{1, 3, 5, 10, 2
 **Verdikt-Regel.** $\bar d = \tfrac{1}{S}\sum_s d_s$, $\mathrm{SE} = \sqrt{\tfrac{1}{S(S-1)}\sum_s (d_s - \bar d)^2}$ mit $S = 20$ Zufalls-Seeds; Kern vorn, wenn $\bar d < -2\,\mathrm{SE}$; Baum vorn, wenn $\bar d > 2\,\mathrm{SE}$; sonst gleichauf.
 Der Baum ist je Zufalls-Seed der bessere von Wald und Boosting am Test, also optimistisch für die Bäume.
 
-**Studie (Skizze).** Gauß-SVM, Zufallswald und Gradient Boosting stammen aus scikit-learn; ihre Gitter und Einstellungen stehen im README. Was hier fehlt: die duale Form der SVM, der Aufbau von Wald und Boosting.
+**Studie (Skizze).** Gauß-SVM, Random Forest und Gradient Boosting stammen aus scikit-learn; ihre Gitter und Einstellungen stehen im README. Was hier fehlt: die duale Form der SVM, der Aufbau von Wald und Boosting.
 
 **Literatur.** Wainberg, Alipanahi, Frey (2016), JMLR 17; Fernández-Delgado u. a. (2014), JMLR 15, 3133 bis 3181; McElfresh u. a. (2023), NeurIPS Datasets and Benchmarks; Grinsztajn, Oyallon, Varoquaux (2022), arXiv 2207.08815.
 Alle Angaben anhand der Quellen geprüft, soweit in den Randsätzen von Experiment 5 genannt.
